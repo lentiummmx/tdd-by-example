@@ -3,15 +3,24 @@ package guru.springframework;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+
 public class MoneyTest {
     @Test
     void testMultiplication() {
         Dollar five = new Dollar(5);
         Dollar product = five.times(2);
-        Assertions.assertEquals(10, product.getAmount());
+        assertEquals(10, product.getAmount());
 
         //testing side effects
         product = five.times(3);
-        Assertions.assertEquals(15, product.getAmount());
+        assertEquals(15, product.getAmount());
+    }
+
+    @Test
+    void testEquality() {
+        assertEquals(new Dollar(5), new Dollar(5));
+        assertNotEquals(new Dollar(5), new Dollar(8));
     }
 }
