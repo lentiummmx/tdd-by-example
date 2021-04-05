@@ -38,8 +38,13 @@ public class Money implements Expression {
                 && this.currency.equals(((Money) o).currency);
     }
 
+    @Override
+    public Money reduce(String to) {
+        return this;
+    }
+
     public Expression plus(Money addend) {
-        return new Money(amount + addend.getAmount(), currency);
+        return new Sum(this, addend);
     }
 
 }
