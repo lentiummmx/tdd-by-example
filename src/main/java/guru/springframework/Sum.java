@@ -13,7 +13,7 @@ public class Sum implements Expression {
     }
 
     @Override
-    public Money reduce(String to) {
+    public Money reduce(Bank bank, String to) {
         int amount = augmend.getAmount() + addmend.getAmount();
         return new Money(amount, to);
     }
