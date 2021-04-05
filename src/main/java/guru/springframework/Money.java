@@ -3,7 +3,7 @@ package guru.springframework;
 import lombok.Data;
 
 @Data
-public abstract class Money {
+public class Money {
 
     protected int amount;
 
@@ -14,7 +14,9 @@ public abstract class Money {
         this.currency = currency;
     }
 
-    public abstract Money times(int multiplier);
+    public Money times(int multiplier) {
+        return new Money(amount * multiplier, this.currency);
+    }
 
     public static Money dollar(int amount) {
         return new Dollar(amount, "USD");
@@ -33,7 +35,7 @@ public abstract class Money {
         }
         Money other = (Money) o;
         return amount == other.amount
-                && this.getClass().equals(o.getClass());
+                && this.currency.equals(((Money) o).currency);
     }
 
 }
