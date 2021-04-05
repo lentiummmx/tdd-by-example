@@ -15,7 +15,8 @@ public class Money {
             return false;
         }
         Money other = (Money) o;
-        return amount == other.amount;
+        return amount == other.amount
+                && this.getClass().equals(o.getClass());
     }
 
 }
