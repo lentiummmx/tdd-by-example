@@ -4,17 +4,22 @@ import lombok.Data;
 
 @Data
 public class Sum implements Expression {
-    private Money augmend;
-    private Money addmend;
+    private Expression augmend;
+    private Expression addmend;
 
-    public Sum(Money augmend, Money addmend) {
+    public Sum(Expression augmend, Expression addmend) {
         this.augmend = augmend;
         this.addmend = addmend;
     }
 
     @Override
     public Money reduce(Bank bank, String to) {
-        int amount = augmend.getAmount() + addmend.getAmount();
+        int amount = augmend.reduce(bank, to).getAmount() + addmend.reduce(bank, to).getAmount();
         return new Money(amount, to);
+    }
+
+    @Override
+    public Expression plus(Expression addend) {
+        return null;
     }
 }
