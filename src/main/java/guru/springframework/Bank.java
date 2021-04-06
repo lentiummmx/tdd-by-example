@@ -8,10 +8,6 @@ public class Bank {
 
     public Money reduce(Expression source, String toCurrency) {
         return source.reduce(this, toCurrency);
-
-//        if (source instanceof Money) return (Money) source;
-//        Sum sum = (Sum) source;
-//        return sum.reduce(toCurrency);
     }
 
     public int rate(String from, String to) {
